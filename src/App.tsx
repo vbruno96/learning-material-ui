@@ -1,13 +1,12 @@
-import { createTheme, ThemeProvider } from '@material-ui/core'
+import { createTheme, ThemeProvider } from '@mui/material'
+import { purple } from '@mui/material/colors'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Create } from './pages/Create'
 import { Notes } from './pages/Notes'
 
 const theme = createTheme({
   palette: {
-    primary: {
-      main: '#121096',
-    },
+    primary: purple,
   },
 })
 

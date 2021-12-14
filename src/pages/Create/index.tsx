@@ -8,9 +8,9 @@ import {
   RadioGroup,
   TextField,
   Typography,
-} from '@material-ui/core'
-import { Send } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
+} from '@mui/material'
+import { Send } from '@mui/icons-material'
+import { makeStyles } from '@mui/styles'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -21,9 +21,11 @@ type Input = {
 
 const useStyles = makeStyles({
   field: {
-    marginTop: 20,
-    marginBottom: 20,
-    display: 'block',
+    '&&': {
+      marginTop: 20,
+      marginBottom: 20,
+      display: 'block',
+    },
   },
 })
 
@@ -76,7 +78,6 @@ export function Create() {
           className={classes.field}
           onChange={(e) => setTitle({ value: e.target.value })}
           label="Note Title"
-          color="secondary"
           fullWidth
           required
           error={title.isEmpty}
@@ -85,7 +86,6 @@ export function Create() {
           className={classes.field}
           onChange={(e) => setDetails({ value: e.target.value })}
           label="Details"
-          color="secondary"
           fullWidth
           required
           multiline
@@ -113,7 +113,6 @@ export function Create() {
         <Button
           variant="contained"
           type="submit"
-          color="primary"
           disableElevation
           endIcon={<Send />}
         >
