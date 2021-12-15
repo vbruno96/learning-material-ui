@@ -1,11 +1,14 @@
 import { AddCircleOutlined, SubjectOutlined } from '@mui/icons-material'
 import {
+  AppBar,
+  Avatar,
   Drawer,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Theme,
+  Toolbar,
   Typography,
 } from '@mui/material'
 import { DefaultTheme, makeStyles } from '@mui/styles'
@@ -48,6 +51,20 @@ const useStyles = makeStyles((theme: Theme) => {
     title: {
       padding: theme.spacing(2),
     },
+    appbar: {
+      '&&': {
+        background: '#fff',
+        color: theme.palette.text.primary,
+        width: `calc(100% - ${drawerWidth}px)`,
+      },
+    },
+    toolbar: theme.mixins.toolbar,
+    date: {
+      flex: 1,
+    },
+    avatar: {
+      marginLeft: theme.spacing(2),
+    },
   }
 })
 
@@ -71,6 +88,21 @@ export function Layout({ children }: Props) {
 
   return (
     <div className={classes.root}>
+      <AppBar className={classes.appbar} elevation={0}>
+        <Toolbar>
+          <Typography className={classes.date}>
+            {Intl.DateTimeFormat('en-US', {
+              dateStyle: 'full',
+              timeStyle: undefined,
+            }).format(Date.now())}
+          </Typography>
+          <Typography>Bruno</Typography>
+          <Avatar
+            className={classes.avatar}
+            src="https://github.com/vbruno96.png"
+          />
+        </Toolbar>
+      </AppBar>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -96,7 +128,10 @@ export function Layout({ children }: Props) {
           ))}
         </List>
       </Drawer>
-      <div className={classes.page}>{children}</div>
+      <div className={classes.page}>
+        <div className={classes.toolbar}></div>
+        {children}
+      </div>
     </div>
   )
 }
