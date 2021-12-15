@@ -22,36 +22,30 @@ type Props = {
   handleDelete: (id: number) => void
 }
 
-const useStyles = makeStyles({
-  avatar: {
-    '&&': {
-      background: (note: Note) => {
-        if (note.category === 'work') {
-          return blueGrey[500]
-        }
-        if (note.category === 'money') {
-          return green[900]
-        }
-        if (note.category === 'reminders') {
-          return yellow[700]
-        }
-        if (note.category === 'todos') {
-          return cyan[500]
-        }
-      },
-    },
-  },
-})
-
 export function NoteCard({ note, handleDelete }: Props) {
-  const classes = useStyles(note)
-
   return (
     <div>
       <Card elevation={3}>
         <CardHeader
           avatar={
-            <Avatar className={classes.avatar}>
+            <Avatar
+              sx={{
+                bgcolor: () => {
+                  if (note.category === 'work') {
+                    return blueGrey[500]
+                  }
+                  if (note.category === 'money') {
+                    return green[900]
+                  }
+                  if (note.category === 'reminders') {
+                    return yellow[700]
+                  }
+                  if (note.category === 'todos') {
+                    return cyan[500]
+                  }
+                },
+              }}
+            >
               {note.category[0].toUpperCase()}
             </Avatar>
           }
