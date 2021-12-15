@@ -5,23 +5,56 @@ import {
   CardContent,
   IconButton,
   Typography,
+  Avatar,
 } from '@mui/material'
+import { blueGrey, cyan, green, yellow } from '@mui/material/colors'
+import { makeStyles } from '@mui/styles'
+
+type Note = {
+  id: number
+  category: string
+  title: string
+  details: string
+}
 
 type Props = {
-  note: {
-    id: number
-    category: string
-    title: string
-    details: string
-  }
+  note: Note
   handleDelete: (id: number) => void
 }
 
+const useStyles = makeStyles({
+  avatar: {
+    '&&': {
+      background: (note: Note) => {
+        if (note.category === 'work') {
+          return blueGrey[500]
+        }
+        if (note.category === 'money') {
+          return green[900]
+        }
+        if (note.category === 'reminders') {
+          return yellow[700]
+        }
+        if (note.category === 'todos') {
+          return cyan[500]
+        }
+      },
+    },
+  },
+})
+
 export function NoteCard({ note, handleDelete }: Props) {
+  const classes = useStyles(note)
+
   return (
     <div>
       <Card elevation={3}>
         <CardHeader
+          avatar={
+            <Avatar className={classes.avatar}>
+              {note.category[0].toUpperCase()}
+            </Avatar>
+          }
           action={
             <IconButton
               onClick={() => {
