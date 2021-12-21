@@ -1,5 +1,5 @@
 import { Route, Routes, HashRouter } from 'react-router-dom'
-import { ColorProvider } from './components/ColorProvider'
+import { ThemeColorProvider } from './components/ThemeColorProvider'
 import { Layout } from './components/Layout'
 import { Create } from './pages/Create'
 import { Notes } from './pages/Notes'
@@ -7,14 +7,14 @@ import { Notes } from './pages/Notes'
 export function App() {
   return (
     <HashRouter>
-      <ColorProvider>
+      <ThemeColorProvider>
         <Layout>
           <Routes>
             <Route path="/" element={<Notes />} />
             <Route path="/create" element={<Create />} />
           </Routes>
         </Layout>
-      </ColorProvider>
+      </ThemeColorProvider>
     </HashRouter>
   )
 }

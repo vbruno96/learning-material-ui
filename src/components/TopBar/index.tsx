@@ -9,14 +9,14 @@ import {
   useTheme,
 } from '@mui/material'
 import { useContext } from 'react'
-import { ColorModeContext } from '../ColorProvider'
+import { ThemeColorContext } from '../ThemeColorProvider'
 
 type Props = {
   drawerWidth: number
 }
 
 export function TopBar({ drawerWidth }: Props) {
-  const { toggleColorMode } = useContext(ColorModeContext)
+  const { toggleColorMode } = useContext(ThemeColorContext)
   const theme = useTheme()
 
   return (

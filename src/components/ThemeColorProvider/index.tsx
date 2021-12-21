@@ -6,14 +6,13 @@ type Props = {
   children: ReactNode
 }
 
-type ColorModeContextData = {
+type ThemeColorContextData = {
   toggleColorMode: () => void
-  mode: PaletteMode
 }
 
-export const ColorModeContext = createContext({} as ColorModeContextData)
+export const ThemeColorContext = createContext({} as ThemeColorContextData)
 
-export function ColorProvider({ children }: Props) {
+export function ThemeColorProvider({ children }: Props) {
   const [mode, setMode] = useState<PaletteMode>('dark')
 
   const colorMode = useMemo(
@@ -21,7 +20,6 @@ export function ColorProvider({ children }: Props) {
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
       },
-      mode,
     }),
     [mode]
   )
@@ -29,8 +27,8 @@ export function ColorProvider({ children }: Props) {
   const theme = useMemo(() => createTheme(themeScheme(mode)), [mode])
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <ThemeColorContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ColorModeContext.Provider>
+    </ThemeColorContext.Provider>
   )
 }
