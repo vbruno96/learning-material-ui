@@ -8,7 +8,6 @@ import {
   Avatar,
 } from '@mui/material'
 import { blueGrey, cyan, green, yellow } from '@mui/material/colors'
-import { makeStyles } from '@mui/styles'
 
 type Note = {
   id: number
@@ -32,10 +31,10 @@ export function NoteCard({ note, handleDelete }: Props) {
               sx={{
                 bgcolor: () => {
                   if (note.category === 'work') {
-                    return blueGrey[500]
+                    return blueGrey[200]
                   }
                   if (note.category === 'money') {
-                    return green[900]
+                    return green['A400']
                   }
                   if (note.category === 'reminders') {
                     return yellow[700]

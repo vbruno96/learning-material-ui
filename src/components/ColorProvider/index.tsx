@@ -1,5 +1,4 @@
-import { PaletteMode } from '@mui/material'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { PaletteMode, ThemeProvider, createTheme } from '@mui/material'
 import { createContext, ReactNode, useMemo, useState } from 'react'
 import { themeScheme } from '../../utlis/themeScheme'
 
@@ -9,6 +8,7 @@ type Props = {
 
 type ColorModeContextData = {
   toggleColorMode: () => void
+  mode: PaletteMode
 }
 
 export const ColorModeContext = createContext({} as ColorModeContextData)
@@ -16,16 +16,20 @@ export const ColorModeContext = createContext({} as ColorModeContextData)
 export function ColorProvider({ children }: Props) {
   const [mode, setMode] = useState<PaletteMode>('dark')
 
-  const toggleColorMode = () => {
-    setMode((prevMode: PaletteMode) =>
-      prevMode === 'light' ? 'dark' : 'light'
-    )
-  }
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+      },
+      mode,
+    }),
+    [mode]
+  )
 
   const theme = useMemo(() => createTheme(themeScheme(mode)), [mode])
 
   return (
-    <ColorModeContext.Provider value={{ toggleColorMode }}>
+    <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ColorModeContext.Provider>
   )

@@ -1,27 +1,20 @@
-import { createTheme, ThemeProvider } from '@mui/material'
-import { purple } from '@mui/material/colors'
-import { BrowserRouter, Route, Routes, HashRouter } from 'react-router-dom'
+import { Route, Routes, HashRouter } from 'react-router-dom'
+import { ColorProvider } from './components/ColorProvider'
 import { Layout } from './components/Layout'
 import { Create } from './pages/Create'
 import { Notes } from './pages/Notes'
 
-const theme = createTheme({
-  palette: {
-    primary: purple,
-  },
-})
-
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <HashRouter>
+    <HashRouter>
+      <ColorProvider>
         <Layout>
           <Routes>
             <Route path="/" element={<Notes />} />
             <Route path="/create" element={<Create />} />
           </Routes>
         </Layout>
-      </HashRouter>
-    </ThemeProvider>
+      </ColorProvider>
+    </HashRouter>
   )
 }

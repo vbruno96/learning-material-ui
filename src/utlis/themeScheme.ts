@@ -1,53 +1,27 @@
 import { PaletteMode } from '@mui/material'
 
-export const themeScheme = (colorMode: PaletteMode) => ({
+export const themeScheme = (mode: PaletteMode) => ({
   palette: {
-    mode: colorMode,
-    ...(colorMode === 'light'
-      ? {
-          primary: {
-            main: '#680da0',
-            light: '#9b45d2',
-            dark: '#350070',
-            contrastText: '#fefefe',
-          },
-          secondary: {
-            main: '#307ea0',
-            light: '#66add1',
-            dark: '#005271',
-            contrastText: '#fefefe',
-          },
-          success: {
-            main: '#42a031',
-            light: '#76d260',
-            dark: '#007000',
-            contrastText: '#000',
-          },
-        }
+    mode,
+    primary: {
+      main: '#005271',
+      light: '#437ea0',
+      dark: '#002a45',
+      contrastText: '#fefefe',
+    },
+    secondary: {
+      main: '#42a031',
+      light: '#76d260',
+      dark: '#007000',
+      contrastText: '#000',
+    },
+    ...(mode === 'light'
+      ? {}
       : {
-          secondary: {
-            main: '#680da0',
-            light: '#9b45d2',
-            dark: '#350070',
-            contrastText: '#fefefe',
-          },
-          primary: {
-            main: '#307ea0',
-            light: '#66add1',
-            dark: '#005271',
-            contrastText: '#fefefe',
-          },
-          success: {
-            main: '#42a031',
-            light: '#76d260',
-            dark: '#007000',
-            contrastText: '#000',
-          },
           background: {
-            default: '#350070',
-            paper: '#9b45d2',
+            default: '#002a45',
+            paper: '#437ea0',
           },
-          divider: '#42a031',
           text: {
             primary: 'rgba(254,254,254, .87)',
             secondary: 'rgba(254,254,254, .54)',
