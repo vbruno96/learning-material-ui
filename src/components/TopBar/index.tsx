@@ -1,34 +1,49 @@
-import { Brightness4Rounded, Brightness7Rounded } from '@mui/icons-material'
-import {
-  AppBar,
-  Avatar,
-  IconButton,
-  Theme,
-  Toolbar,
-  Typography,
-  useTheme,
-} from '@mui/material'
-import { useContext } from 'react'
-import { ThemeColorContext } from '../ThemeColorProvider'
+import { useContext } from 'react';
 
-type Props = {
-  drawerWidth: number
-}
+import { Brightness4Rounded, Brightness7Rounded, MenuRounded } from '@mui/icons-material';
+import { AppBar, Avatar, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
 
-export function TopBar({ drawerWidth }: Props) {
+import { LayoutContext } from '../../context/Layout';
+import { ThemeColorContext } from '../ThemeColorProvider';
+
+export function TopBar() {
   const { toggleColorMode } = useContext(ThemeColorContext)
+  const { sideBarWidth, isOpen, toggleSideBar } = useContext(LayoutContext)
   const theme = useTheme()
 
   return (
     <AppBar
       sx={{
-        width: `calc(100% - ${drawerWidth}px)`,
         bgcolor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
+        zIndex: theme.zIndex.drawer + 1,
+        transition: theme.transitions.create(['width', 'margin'], {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
+        }),
+        ...(isOpen && {
+          marginLeft: sideBarWidth,
+          width: `calc(100% - ${sideBarWidth}px)`,
+          transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+        }),
       }}
       elevation={0}
     >
       <Toolbar>
+        <IconButton
+          color="secondary"
+          aria-label="open side bar"
+          onClick={toggleSideBar}
+          edge="start"
+          sx={{
+            ...(isOpen && { display: 'none' }),
+          }}
+        >
+          <MenuRounded />
+        </IconButton>
         <Typography
           sx={{
             flex: 1,

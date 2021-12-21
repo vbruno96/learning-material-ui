@@ -1,19 +1,14 @@
-import { NoteAddRounded, NotesRounded } from '@mui/icons-material'
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-  useTheme,
-} from '@mui/material'
-import { ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { ReactNode, useContext, useState } from 'react';
 
-type Props = {
-  drawerWidth: number
-}
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { ChevronLeftRounded, NoteAddRounded, NotesRounded } from '@mui/icons-material';
+import {
+    Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography,
+    useTheme
+} from '@mui/material';
+
+import { LayoutContext } from '../../context/Layout';
 
 type MenuItens = {
   text: string
@@ -34,49 +29,79 @@ const menuItens: MenuItens[] = [
   },
 ]
 
-export function SideBar({ drawerWidth }: Props) {
+export function SideBar() {
   const theme = useTheme()
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const { sideBarWidth, isOpen, toggleSideBar, openedMixin, closedMixin } = useContext(LayoutContext)
 
   return (
     <Drawer
       sx={{
-        width: drawerWidth,
+        width: sideBarWidth,
+        flexShrink: 0,
+        whiteSpace: 'nowrap',
+        boxSizing: 'border-box',
+        ...(isOpen && {
+          ...openedMixin(theme),
+        }),
+        ...(!isOpen && {
+          ...closedMixin(theme),
+        }),
         '& .MuiDrawer-paper': {
-          width: drawerWidth,
-          borderRight: 'none',
           bgcolor: theme.palette.primary.main,
           color: theme.palette.primary.contrastText,
+          borderRight: 'none',
+          borderRightColor: 'transparent',
+          width: sideBarWidth,
+          ...(isOpen && {
+            ...openedMixin(theme),
+          }),
+          ...(!isOpen && {
+            ...closedMixin(theme),
+          }),
         },
       }}
       variant="permanent"
       anchor="left"
+      open={isOpen}
     >
-      <div>
-        <Typography
-          variant="h5"
-          sx={{
-            p: theme.spacing(2),
-          }}
-        >
-          Notes
-        </Typography>
-      </div>
-      <List>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          ...theme.mixins.toolbar,
+        }}
+      >
+        <Typography variant="h5">Notes</Typography>
+        <IconButton edge="end" onClick={toggleSideBar}>
+          <ChevronLeftRounded />
+        </IconButton>
+      </Box>
+      <List
+        sx={{
+          mt: theme.spacing(1),
+        }}
+      >
         {menuItens.map((item) => (
-          <ListItem
+          <ListItemButton
             key={item.text}
-            button
             onClick={() => navigate(item.path)}
             sx={{
-              '& .Mui-active': {
-                color: theme.palette.success.main,
+              '&:hover, &.Mui-focusVisible': {
+                bgcolor: theme.palette.primary.light,
+              },
+              '&.Mui-selected': {
+                bgcolor: theme.palette.primary.light,
               },
             }}
+            selected={location.pathname === item.path ? true : false}
           >
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
     </Drawer>

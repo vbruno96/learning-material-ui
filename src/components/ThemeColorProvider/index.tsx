@@ -1,6 +1,8 @@
-import { PaletteMode, ThemeProvider, createTheme } from '@mui/material'
-import { createContext, ReactNode, useMemo, useState } from 'react'
-import { themeScheme } from '../../utlis/themeScheme'
+import { createContext, ReactNode, useMemo, useState } from 'react';
+
+import { createTheme, PaletteMode, ThemeProvider } from '@mui/material';
+
+import { themeScheme } from '../../utlis/themeScheme';
 
 type Props = {
   children: ReactNode

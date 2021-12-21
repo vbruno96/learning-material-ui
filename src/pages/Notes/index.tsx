@@ -1,7 +1,9 @@
-import { Masonry } from '@mui/lab'
-import { Container } from '@mui/material'
-import { useEffect, useState } from 'react'
-import { NoteCard } from '../../components/NoteCard'
+import { useEffect, useState } from 'react';
+
+import { Masonry } from '@mui/lab';
+import { Container } from '@mui/material';
+
+import { NoteCard } from '../../components/NoteCard';
 
 type Note = {
   id: number

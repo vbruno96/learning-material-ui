@@ -1,18 +1,12 @@
+import { FormEvent, useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
+import { Send } from '@mui/icons-material';
 import {
-  Button,
-  Container,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-  useTheme,
-} from '@mui/material'
-import { Send } from '@mui/icons-material'
-import { FormEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+    Button, Container, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField,
+    Typography, useTheme
+} from '@mui/material';
 
 type Input = {
   value: String
@@ -55,12 +49,7 @@ export function Create() {
 
   return (
     <Container>
-      <Typography
-        variant="h6"
-        component="h2"
-        color="textSecondary"
-        gutterBottom
-      >
+      <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
         Create a new Note
       </Typography>
 
@@ -103,76 +92,37 @@ export function Create() {
           <FormLabel required error={category.isEmpty}>
             Note Category
           </FormLabel>
-          <RadioGroup
-            value={category.value}
-            onChange={(e) => setCategory({ value: e.target.value })}
-          >
+          <RadioGroup value={category.value} onChange={(e) => setCategory({ value: e.target.value })}>
             <FormControlLabel
               sx={{
-                color:
-                  theme.palette.mode === 'light'
-                    ? theme.palette.primary.main
-                    : theme.palette.text.secondary,
+                color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
               value="money"
-              control={
-                <Radio
-                  color={
-                    theme.palette.mode === 'light' ? 'primary' : 'secondary'
-                  }
-                />
-              }
+              control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
               label="Money"
             />
             <FormControlLabel
               sx={{
-                color:
-                  theme.palette.mode === 'light'
-                    ? theme.palette.primary.main
-                    : theme.palette.text.secondary,
+                color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
               value="todos"
-              control={
-                <Radio
-                  color={
-                    theme.palette.mode === 'light' ? 'primary' : 'secondary'
-                  }
-                />
-              }
+              control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
               label="Todos"
             />
             <FormControlLabel
               sx={{
-                color:
-                  theme.palette.mode === 'light'
-                    ? theme.palette.primary.main
-                    : theme.palette.text.secondary,
+                color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
               value="reminders"
-              control={
-                <Radio
-                  color={
-                    theme.palette.mode === 'light' ? 'primary' : 'secondary'
-                  }
-                />
-              }
+              control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
               label="Reminders"
             />
             <FormControlLabel
               sx={{
-                color:
-                  theme.palette.mode === 'light'
-                    ? theme.palette.primary.main
-                    : theme.palette.text.secondary,
+                color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
               value="work"
-              control={
-                <Radio
-                  color={
-                    theme.palette.mode === 'light' ? 'primary' : 'secondary'
-                  }
-                />
-              }
+              control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
               label="Work"
             />
           </RadioGroup>

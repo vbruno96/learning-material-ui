@@ -1,13 +1,6 @@
-import { DeleteOutlined } from '@mui/icons-material'
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  IconButton,
-  Typography,
-  Avatar,
-} from '@mui/material'
-import { blueGrey, cyan, green, yellow } from '@mui/material/colors'
+import { DeleteOutlined } from '@mui/icons-material';
+import { Avatar, Card, CardContent, CardHeader, IconButton, Typography } from '@mui/material';
+import { blueGrey, cyan, green, yellow } from '@mui/material/colors';
 
 type Note = {
   id: number
