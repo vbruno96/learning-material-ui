@@ -1,13 +1,13 @@
 {
   "name": "learning-material-ui",
-  "homepage": "https://vbruno96.github.io/learning-material-ui",
+  "homepage": "https://vbruno96.github.io/learning-material-ui/",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "eslint ./src && tsc && vite build",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "lint": "eslint ./src"
   },
