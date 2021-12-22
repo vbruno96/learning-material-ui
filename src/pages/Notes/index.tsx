@@ -1,34 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import { Masonry } from '@mui/lab';
-import { Container } from '@mui/material';
+import { Masonry } from '@mui/lab'
+import { Container } from '@mui/material'
 
-import { NoteCard } from '../../components/NoteCard';
-
-type Note = {
-  id: number
-  title: string
-  details: string
-  category: string
-}
+import { Note, getNotes, deleteNote } from '../../data/db'
+import { NoteCard } from '../../components/NoteCard'
 
 export function Notes() {
   const [notes, setNotes] = useState<Note[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:6969/notes')
-      .then((res) => res.json())
-      .then((data) => setNotes(data))
+    setNotes(getNotes())
   }, [])
 
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:6969/notes/${id}`, {
-      method: 'DELETE',
-    })
-
-    const newNotes = notes.filter((note) => note.id !== id)
-
-    setNotes(newNotes)
+    deleteNote(id)
+    setNotes(notes.filter((note) => note.id !== id))
   }
 
   return (

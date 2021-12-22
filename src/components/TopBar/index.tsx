@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { useContext } from 'react'
 
-import { Brightness4Rounded, Brightness7Rounded, MenuRounded } from '@mui/icons-material';
-import { AppBar, Avatar, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
+import { Brightness4Rounded, Brightness7Rounded, MenuRounded } from '@mui/icons-material'
+import { AppBar, Avatar, IconButton, Toolbar, Typography, useTheme } from '@mui/material'
 
-import { LayoutContext } from '../../context/Layout';
-import { ThemeColorContext } from '../ThemeColorProvider';
+import { LayoutContext } from '../../context/Layout'
+import { ThemeColorContext } from '../ThemeColorProvider'
 
 export function TopBar() {
   const { toggleColorMode } = useContext(ThemeColorContext)

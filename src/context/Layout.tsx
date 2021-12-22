@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react'
 
-import { CSSObject, Theme } from '@mui/material';
+import { CSSObject, Theme } from '@mui/material'
 
 type Props = { children: ReactNode }
 

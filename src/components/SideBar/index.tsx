@@ -1,14 +1,22 @@
-import { ReactNode, useContext, useState } from 'react';
+import { ReactNode, useContext, useState } from 'react'
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import { ChevronLeftRounded, NoteAddRounded, NotesRounded } from '@mui/icons-material';
+import { ChevronLeftRounded, NoteAddRounded, NotesRounded } from '@mui/icons-material'
 import {
-    Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography,
-    useTheme
-} from '@mui/material';
+  Box,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+  useTheme,
+} from '@mui/material'
 
-import { LayoutContext } from '../../context/Layout';
+import { LayoutContext } from '../../context/Layout'
 
 type MenuItens = {
   text: string

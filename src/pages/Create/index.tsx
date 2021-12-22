@@ -1,15 +1,24 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react'
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-import { Send } from '@mui/icons-material';
+import { Send } from '@mui/icons-material'
 import {
-    Button, Container, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField,
-    Typography, useTheme
-} from '@mui/material';
+  Button,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+  useTheme,
+} from '@mui/material'
+import { createNote, getNotes } from '../../data/db'
 
 type Input = {
-  value: String
+  value: string
   isEmpty?: boolean
 }
 
@@ -33,17 +42,14 @@ export function Create() {
     }
 
     if (!title.isEmpty && !details.isEmpty && !details.isEmpty) {
-      fetch('http://localhost:6969/notes', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          title: title.value,
-          details: details.value,
-          category: category.value,
-        }),
-      }).then(() => navigate('/'))
+      const lastNote = getNotes().slice(-1)
+      createNote({
+        id: lastNote[0].id + 1,
+        title: title.value,
+        details: details.value,
+        category: category.value,
+      })
+      navigate('/')
     }
   }
 

@@ -1,10 +1,10 @@
-import { ReactNode, useContext, useEffect } from 'react';
+import { ReactNode, useContext, useEffect } from 'react'
 
-import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 
-import { SideBar } from '../SideBar';
-import { TopBar } from '../TopBar';
+import { SideBar } from '../SideBar'
+import { TopBar } from '../TopBar'
 
 type Props = {
   children: ReactNode
