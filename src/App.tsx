@@ -1,3 +1,4 @@
+import React from 'react'
 import { Route, Routes, HashRouter } from 'react-router-dom'
 import { ThemeColorProvider } from './components/ThemeColorProvider'
 import { Layout } from './components/Layout'
@@ -12,8 +13,8 @@ export function App() {
         <LayoutProvider>
           <Layout>
             <Routes>
-              <Route path="/" element={<Notes />} />
-              <Route path="/create" element={<Create />} />
+              <Route path='/' element={<Notes />} />
+              <Route path='/create' element={<Create />} />
             </Routes>
           </Layout>
         </LayoutProvider>

@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { DeleteOutlined } from '@mui/icons-material'
 import { Avatar, Card, CardContent, CardHeader, IconButton, Typography } from '@mui/material'
 import { blueGrey, cyan, green, yellow } from '@mui/material/colors'
@@ -56,7 +58,7 @@ export function NoteCard({ note, handleDelete }: Props) {
           subheader={note.category}
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant='body2' color='textSecondary'>
             {note.details}
           </Typography>
         </CardContent>

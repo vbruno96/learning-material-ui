@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useState } from 'react'
+import React, { ReactNode, useContext } from 'react'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -8,7 +8,6 @@ import {
   Drawer,
   IconButton,
   List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -27,12 +26,12 @@ type MenuItens = {
 const menuItens: MenuItens[] = [
   {
     text: 'My Notes',
-    icon: <NotesRounded color="success" />,
+    icon: <NotesRounded color='success' />,
     path: '/',
   },
   {
     text: 'Create Notes',
-    icon: <NoteAddRounded color="success" />,
+    icon: <NoteAddRounded color='success' />,
     path: '/create',
   },
 ]
@@ -71,8 +70,8 @@ export function SideBar() {
           }),
         },
       }}
-      variant="permanent"
-      anchor="left"
+      variant='permanent'
+      anchor='left'
       open={isOpen}
     >
       <Box
@@ -83,8 +82,8 @@ export function SideBar() {
           ...theme.mixins.toolbar,
         }}
       >
-        <Typography variant="h5">Notes</Typography>
-        <IconButton edge="end" onClick={toggleSideBar}>
+        <Typography variant='h5'>Notes</Typography>
+        <IconButton edge='end' onClick={toggleSideBar}>
           <ChevronLeftRounded />
         </IconButton>
       </Box>

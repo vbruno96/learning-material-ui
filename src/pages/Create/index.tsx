@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -55,15 +55,15 @@ export function Create() {
 
   return (
     <Container>
-      <Typography variant="h6" component="h2" color="textSecondary" gutterBottom>
+      <Typography variant='h6' component='h2' color='textSecondary' gutterBottom>
         Create a new Note
       </Typography>
 
-      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+      <form noValidate autoComplete='off' onSubmit={handleSubmit}>
         <TextField
           color={theme.palette.mode === 'light' ? 'primary' : 'secondary'}
           onChange={(e) => setTitle({ value: e.target.value })}
-          label="Note Title"
+          label='Note Title'
           fullWidth
           required
           error={title.isEmpty}
@@ -76,7 +76,7 @@ export function Create() {
         <TextField
           color={theme.palette.mode === 'light' ? 'primary' : 'secondary'}
           onChange={(e) => setDetails({ value: e.target.value })}
-          label="Details"
+          label='Details'
           fullWidth
           required
           multiline
@@ -103,40 +103,40 @@ export function Create() {
               sx={{
                 color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
-              value="money"
+              value='money'
               control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
-              label="Money"
+              label='Money'
             />
             <FormControlLabel
               sx={{
                 color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
-              value="todos"
+              value='todos'
               control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
-              label="Todos"
+              label='Todos'
             />
             <FormControlLabel
               sx={{
                 color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
-              value="reminders"
+              value='reminders'
               control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
-              label="Reminders"
+              label='Reminders'
             />
             <FormControlLabel
               sx={{
                 color: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.text.secondary,
               }}
-              value="work"
+              value='work'
               control={<Radio color={theme.palette.mode === 'light' ? 'primary' : 'secondary'} />}
-              label="Work"
+              label='Work'
             />
           </RadioGroup>
         </FormControl>
         <Button
-          variant="contained"
+          variant='contained'
           color={theme.palette.mode === 'light' ? 'primary' : 'secondary'}
-          type="submit"
+          type='submit'
           disableElevation
           endIcon={<Send />}
         >

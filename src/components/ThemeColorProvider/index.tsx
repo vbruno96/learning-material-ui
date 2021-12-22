@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useMemo, useState } from 'react'
+import React, { createContext, ReactNode, useMemo, useState } from 'react'
 
 import { createTheme, PaletteMode, ThemeProvider } from '@mui/material'
 

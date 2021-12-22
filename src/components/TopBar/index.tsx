@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 
 import { Brightness4Rounded, Brightness7Rounded, MenuRounded } from '@mui/icons-material'
 import { AppBar, Avatar, IconButton, Toolbar, Typography, useTheme } from '@mui/material'
@@ -34,10 +34,10 @@ export function TopBar() {
     >
       <Toolbar>
         <IconButton
-          color="secondary"
-          aria-label="open side bar"
+          color='secondary'
+          aria-label='open side bar'
           onClick={toggleSideBar}
-          edge="start"
+          edge='start'
           sx={{
             ...(isOpen && { display: 'none' }),
           }}
@@ -59,7 +59,7 @@ export function TopBar() {
           sx={{
             ml: theme.spacing(2),
           }}
-          src="https://github.com/vbruno96.png"
+          src='https://github.com/vbruno96.png'
         />
         <IconButton
           sx={{
